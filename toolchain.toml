@@ -1,0 +1,29 @@
+# toolchain.toml — manifest for toolchain-verify
+# https://github.com/Sanilas-ai/toolchain-verify
+#
+# Written for a GitHub-hosted ubuntu-latest runner (a VM, not a container),
+# hence require_container = false. On your own machine run
+#   toolchain-verify check -m toolchain.toml
+# and, to record exact versions + SHA-256 of what is installed:
+#   toolchain-verify pin -m toolchain.toml --dry-run
+require_container = false
+
+[[tool]]
+name = "go"
+version = ">=1.22"
+version_args = ["version"]
+version_regex = 'go(?P<version>\d+\.\d+(\.\d+)?)'
+
+[[tool]]
+name = "git"
+version = ">=2.30"
+version_regex = 'git version (?P<version>\d+\.\d+(\.\d+)?)'
+
+[[tool]]
+name = "python3"
+version = ">=3.10"
+
+[[tool]]
+name = "node"
+version = ">=18"
+optional = true   # present on ubuntu-latest; SKIP instead of FAIL elsewhere

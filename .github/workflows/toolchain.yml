@@ -1,0 +1,31 @@
+# Installs toolchain-verify from source and checks this runner against
+# toolchain.toml. The tool is pinned to a commit for reproducibility; bump it
+# (or use @latest) to try newer versions.
+name: toolchain
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  TOOLCHAIN_VERIFY_REF: 12eb243a7f05e8f51986ef8362c62f1c55298e1b
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: install toolchain-verify
+        run: GOBIN="$RUNNER_TEMP/bin" go install "github.com/Sanilas-ai/toolchain-verify/cmd/toolchain-verify@$TOOLCHAIN_VERIFY_REF"
+      - name: check
+        run: '"$RUNNER_TEMP/bin/toolchain-verify" check -m toolchain.toml -v'
+      - name: pin (dry run)
+        run: '"$RUNNER_TEMP/bin/toolchain-verify" pin -m toolchain.toml --dry-run'
