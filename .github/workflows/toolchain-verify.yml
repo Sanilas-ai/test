@@ -1,4 +1,4 @@
-# Prove Sanilas-ai/toolchain-verify@v0.1.0 composite action end-to-end.
+# Prove Sanilas-ai/toolchain-verify@v0.1.1 composite action end-to-end.
 name: toolchain-verify
 
 on:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: toolchain-verify scan
-        uses: Sanilas-ai/toolchain-verify@v0.1.0
+        uses: Sanilas-ai/toolchain-verify@v0.1.1
         with:
           command: scan
           path: .

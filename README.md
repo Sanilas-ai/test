@@ -37,7 +37,7 @@ fails by design.*
 This repository exercises the public [toolchain-verify](https://github.com/Sanilas-ai/toolchain-verify) GitHub Action:
 
 ```yaml
-- uses: Sanilas-ai/toolchain-verify@v0.1.0
+- uses: Sanilas-ai/toolchain-verify@v0.1.1
   with:
     command: scan
     path: .
