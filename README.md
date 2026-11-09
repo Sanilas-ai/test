@@ -31,3 +31,15 @@ fails by design.*
 ## Лицензия / License
 
 [Apache-2.0](LICENSE), как и у toolchain-verify.
+
+## CI
+
+This repository exercises the public [toolchain-verify](https://github.com/Sanilas-ai/toolchain-verify) GitHub Action:
+
+```yaml
+- uses: Sanilas-ai/toolchain-verify@v0.1.0
+  with:
+    command: scan
+    path: .
+    format: sarif
+```

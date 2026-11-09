@@ -1,0 +1,25 @@
+# Prove Sanilas-ai/toolchain-verify@v0.1.0 composite action end-to-end.
+name: toolchain-verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: toolchain-verify scan
+        uses: Sanilas-ai/toolchain-verify@v0.1.0
+        with:
+          command: scan
+          path: .
+          format: sarif
+          fail-on: fail
+          upload-sarif: "true"
