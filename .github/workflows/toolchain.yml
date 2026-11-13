@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  TOOLCHAIN_VERIFY_REF: 12eb243a7f05e8f51986ef8362c62f1c55298e1b
+  TOOLCHAIN_VERIFY_REF: 1b3ddb95da6ee97d7b2ac4293106a3e5597a22ea
 
 jobs:
   check:
